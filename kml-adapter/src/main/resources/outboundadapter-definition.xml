@@ -1,0 +1,32 @@
+<adapter name="KML2" label="KML Outbound Adapter" domain="com.esri.ges.adapter.outbound" type="outbound">
+	<description>Capable of generating kml that contains links for refresh and update.</description>
+	<propertyDefinitions>
+		<propertyDefinition propertyName="showTrack" label="Show Track Line" description="Determines whether track line will be included in KML." propertyType="Boolean" defaultValue="true" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="pointStyleFilename" label="Point Style File Name" description="Style File Name for Points" propertyType="String" defaultValue="esristylekml" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="pointStyleId" label="Point Symbol ID" description="Point Symbol ID from the Point Style File" propertyType="String" defaultValue="pushpin" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="lineStyleFilename" label="Line Style File Name" description="Style File Name for Lines" propertyType="String" defaultValue="esrilinestylekml" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="lineStyleId" label="Line Symbol ID" description="Line Symbol ID from the Line Style File" propertyType="String" defaultValue="linestyleGreen" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="altitudeMode" label="Altitude Mode" description="Altitude Mode" propertyType="String" defaultValue="clampToGround" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="refreshInterval" label="Refresh Interval (seconds)" description="Time-based refresh interval in seconds" propertyType="Integer" defaultValue="10" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="updateInterval" label="Update Interval (seconds)" description="Time-based update interval in seconds" propertyType="Integer" defaultValue="2" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="modelScale" label="Model Scale" description="Model Scale" propertyType="Integer" defaultValue="2" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="mimeTypeKml" label="MIME Type for KML" description="MIME Type for KML.  This MIME Type will be used for http output of kmls if compression is set to false." propertyType="String" defaultValue="application/vnd.google-earth.kml+xml" mandatory="false" readOnly="true"/>
+		<propertyDefinition propertyName="mimeTypeKmz" label="MIME Type for KMZ" description="MIME Type for KMZ.  This MIME Type will be used for http output of kmls if compression is set to true" propertyType="String" defaultValue="application/vnd.google-earth.kmz" mandatory="false" readOnly="true"/>
+		<propertyDefinition propertyName="description" label="Description" description="Description" propertyType="String" defaultValue="AGES Description" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="geoEventDefinitions" label="Geoevent Definitions" description="Geoevent Definitions" propertyType="String" defaultValue="" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="lineStyleField" label="Line Style Field" description="Line Style Field" propertyType="String" defaultValue="" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="pointStyleField" label="Point Style Field" description="Point Style Field" propertyType="String" defaultValue="" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="modelField" label="Point Model Field" description="Point Model Field" propertyType="String" defaultValue="" mandatory="false" readOnly="false"/>
+<!-- 		<propertyDefinition propertyName="modelFileSubDir" label="Model File Sub Directory" description="Model File Sub Directory under the Asset Directory" propertyType="String" defaultValue="/kml/3Dmodels/models" mandatory="false" readOnly="false"/> -->
+		<propertyDefinition propertyName="modelId" label="Model ID" description="Model ID" propertyType="String" defaultValue="2" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="updateMode" label="Update Mode" description="Update Mode" propertyType="Boolean" defaultValue="false" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="linksOnly" label="KML with only links" description="Initial KML only contains links to refreshes and updates.  A non-initial KML will be either a refresh or an update." propertyType="Boolean" defaultValue="true" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="outputName" label="outputName" description="Internal: outputName" propertyType="String" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="f" label="Output Format" description="Output Format" propertyType="String" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="url" label="url" description="Internal: url" propertyType="String" mandatory="false" readOnly="false"/>
+<!-- 		<propertyDefinition propertyName="styleFileSubDir" label="Style File Sub Directory" description="Style File Sub Directory under the Asset Directory" propertyType="String" defaultValue="/kml/styles" mandatory="false" readOnly="false"/> -->
+<!-- 		<propertyDefinition propertyName="modelFileSubDir" label="Model File Sub Directory" description="Model File Sub Directory under the Asset Directory" propertyType="String" defaultValue="/kml/3Dmodels/models" mandatory="false" readOnly="false"/> -->
+		<propertyDefinition propertyName="use3DModel" label="Use 3D Model" description="Use 3D Model." propertyType="Boolean" defaultValue="false" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="compression" label="Generate KMZ by compressing KML" description="Generate KMZ by compressing KML." propertyType="Boolean" defaultValue="false" mandatory="false" readOnly="false"/>
+	</propertyDefinitions>
+</adapter>
