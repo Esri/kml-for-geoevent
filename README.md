@@ -1,6 +1,6 @@
 # kml-for-geoevent
 
-ArcGIS GeoEvent Processor Kml Outbound Adapter for Formatting GeoEvent to KMLs.
+ArcGIS GeoEvent Processor KML Outbound Adapter for sending GeoEvents in the KML format.
 
 ![App](kml-for-geoevent.png?raw=true)
 
@@ -29,7 +29,7 @@ Installing the cfg file and the built jar file:
 
 ## Resources
 
-* Download the connector's tutorial from the ArcGIS [GeoEvent Processor Gallery](http://links.esri.com/geoevent-gallery)
+* [Connector gallery item](http://www.arcgis.com/home/item.html?id=8ddf65e2d9894d37ae19856671392c45) on the ArcGIS GeoEvent Processor Gallery
 * [ArcGIS GeoEvent Processor for Server Resource Center](http://pro.arcgis.com/share/geoevent-processor/)
 * [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
 * [KML Reference](https://developers.google.com/kml/documentation/kmlreference)
