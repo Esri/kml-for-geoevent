@@ -106,7 +106,7 @@ public class KmlGeneratorBase
           }
           else
           {
-            LOG.equals("Unsupported Geometry Type.");
+            LOG.info("Unsupported Geometry Type.");
           }
         }
         else if (obj instanceof Date)
