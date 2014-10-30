@@ -33,17 +33,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
+import com.esri.core.geometry.Geometry.Type;
+import com.esri.core.geometry.MapGeometry;
 import com.esri.ges.core.geoevent.FieldDefinition;
 import com.esri.ges.core.geoevent.GeoEvent;
 import com.esri.ges.core.geoevent.GeoEventDefinition;
-import com.esri.ges.spatial.Geometry;
+import com.esri.ges.framework.i18n.BundleLogger;
+import com.esri.ges.framework.i18n.BundleLoggerFactory;
 
 public class KmlGeneratorBase
 {
-  private static final Log      LOG                             = LogFactory.getLog(KmlGeneratorBase.class);
+  private static final BundleLogger LOGGER = BundleLoggerFactory.getLogger(KmlGeneratorBase.class);
   
   private String altitudeTag;
   private String kmlLabelFieldTag;
@@ -53,7 +53,8 @@ public class KmlGeneratorBase
   private String styleUrl;
   private String modelUrl;
   
-  protected Placemark createPlacemark(GeoEvent geoevent, boolean updateMode, KmlRequestParameters params, String styleUrl, String modelUrl)
+  @SuppressWarnings("deprecation")
+	protected Placemark createPlacemark(GeoEvent geoevent, boolean updateMode, KmlRequestParameters params, String styleUrl, String modelUrl)
   {
     GeoEventDefinition geoEventDefinition = geoevent.getGeoEventDefinition();
     String pointStyleId = params.getPointStyleId();
@@ -81,11 +82,10 @@ public class KmlGeneratorBase
 
         if (i == geoevent.getGeoEventDefinition().getGeometryId())
         {
-          Geometry geom = geoevent.getGeometry();
-          if (geom instanceof com.esri.ges.spatial.Point)
+          MapGeometry geom = geoevent.getGeometry();
+          if( geom != null && geom.getGeometry() != null && geom.getGeometry().getType() == Type.Point  )
           {
-            com.esri.ges.spatial.Point point = (com.esri.ges.spatial.Point) geom;
-
+            com.esri.core.geometry.Point point = (com.esri.core.geometry.Point) geom.getGeometry();
             if(params.isUse3DModel())
             {
               Model model = createModel(geoevent,point, params, modelUrl);
@@ -106,7 +106,7 @@ public class KmlGeneratorBase
           }
           else
           {
-            LOG.info("Unsupported Geometry Type.");
+          	LOGGER.info("Unsupported Geometry Type.");
           }
         }
         else if (obj instanceof Date)
@@ -136,7 +136,8 @@ public class KmlGeneratorBase
     return pm;
   }
 
-  protected Placemark createPlacemarkForTrack(GeoEvent geoevent, List<GeoEvent> geoevents, boolean updateMode, String altitudeMode, String styleUrl, String defaultLineStyleId, String lineStyleField)
+  @SuppressWarnings("deprecation")
+	protected Placemark createPlacemarkForTrack(GeoEvent geoevent, List<GeoEvent> geoevents, boolean updateMode, String altitudeMode, String styleUrl, String defaultLineStyleId, String lineStyleField)
   {
     GeoEventDefinition geoEventDefinition = geoevent.getGeoEventDefinition();
     String lineStyleId = defaultLineStyleId;
@@ -202,9 +203,10 @@ public class KmlGeneratorBase
     String ptStr = "";
     for (int j = geoevents.size() - 1; j >= 0; j--)
     {
-      if (geoevents.get(j).getGeometry() instanceof com.esri.ges.spatial.Point)
+    	GeoEvent geoEvent = geoevents.get(j);
+    	if( geoEvent.getGeometry() != null && geoEvent.getGeometry().getGeometry() != null && geoEvent.getGeometry().getGeometry().getType() == Type.Point  )
       {
-        com.esri.ges.spatial.Point pt = (com.esri.ges.spatial.Point) geoevents.get(j).getGeometry();
+      	com.esri.core.geometry.Point pt = (com.esri.core.geometry.Point) geoEvent.getGeometry().getGeometry();
         if (useZValue)
         {
           // Workaround: currently geomtry doesn't give us z value.  We have to make sure that 
@@ -234,7 +236,6 @@ public class KmlGeneratorBase
     }
     return strCoords;
   }
-
   
   protected boolean validateAltitudeMode(String input)
   {
@@ -249,7 +250,7 @@ public class KmlGeneratorBase
   {
     try
     {
-      URL url = new URL(styleFilename);
+      new URL(styleFilename);
       return styleFilename + "#";
     }
     catch (MalformedURLException e)
@@ -259,17 +260,15 @@ public class KmlGeneratorBase
       {
         u = new URI(styleUrl);
         return u.toString() + "/" + styleFilename + ".xml#";
-
       }
-      catch (URISyntaxException e1)
+      catch (URISyntaxException error)
       {
-        LOG.error(e1);
+      	LOGGER.error(error.getMessage(), error);
       }
-
     }
-    catch (Exception e2)
+    catch (Exception error)
     {
-      LOG.error(e2);
+    	LOGGER.error(error.getMessage(), error);
     }
     return "";
   }
@@ -278,7 +277,7 @@ public class KmlGeneratorBase
   {
     try
     {
-      URL url = new URL(modelPath);
+      new URL(modelPath);
       return modelPath;
     }
     catch (MalformedURLException e)
@@ -290,15 +289,14 @@ public class KmlGeneratorBase
         return u.toString();
 
       }
-      catch (URISyntaxException e1)
+      catch (URISyntaxException error)
       {
-        LOG.error(e1);
+      	LOGGER.error(error.getMessage(), error);
       }
-
     }
-    catch (Exception e2)
+    catch (Exception error)
     {
-      LOG.error(e2);
+    	LOGGER.error(error.getMessage(), error);
     }
     return "";
   }
@@ -319,7 +317,7 @@ public class KmlGeneratorBase
     return false;
   }
   
-  protected Model createModel(GeoEvent geoevent, com.esri.ges.spatial.Point point, KmlRequestParameters params, String modelPath)
+  protected Model createModel(GeoEvent geoevent, com.esri.core.geometry.Point point, KmlRequestParameters params, String modelPath)
   {
     Model model = new Model();
     Location location = new Location();
@@ -455,6 +453,4 @@ public class KmlGeneratorBase
   {
     this.styleUrl = styleUrl;
   }
-  
-  
 }

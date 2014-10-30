@@ -1,9 +1,10 @@
-<adapter name="KML2" label="KML Outbound Adapter" domain="com.esri.ges.adapter.outbound" type="outbound">
-	<description>Capable of generating kml that contains links for refresh and update.</description>
+<adapter name="KML2" label="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_LABEL}" domain="com.esri.ges.adapter.outbound" type="outbound">
+	<description>${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_DESC}</description>
 	<propertyDefinitions>
-		<propertyDefinition propertyName="showTrack" label="Show Track Line" description="Determines whether track line will be included in KML." propertyType="Boolean" defaultValue="true" mandatory="false" readOnly="false"/>
-		<propertyDefinition propertyName="pointStyleFilename" label="Point Style File Name" description="Style File Name for Points" propertyType="String" defaultValue="esristylekml" mandatory="false" readOnly="false"/>
-		<propertyDefinition propertyName="pointStyleId" label="Point Symbol ID" description="Point Symbol ID from the Point Style File" propertyType="String" defaultValue="pushpin" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="showTrack" label="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_SHOW_TRACK_LINE_LBL}" description="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_SHOW_TRACK_LINE_DESC}" propertyType="Boolean" defaultValue="true" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="pointStyleFilename" label="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_POINT_STYLE_LBL}" description="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_POINT_STYLE_DESC}" propertyType="String" defaultValue="esristylekml" mandatory="false" readOnly="false"/>
+		<propertyDefinition propertyName="pointStyleId" label="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_POINT_SYMBOL_ID_LBL}" description="${com.esri.geoevent.adapter.kml-adapter.ADAPTER_OUT_POINT_SYMBOL_ID_DESC}" propertyType="String" defaultValue="pushpin" mandatory="false" readOnly="false"/>
+		
 		<propertyDefinition propertyName="lineStyleFilename" label="Line Style File Name" description="Style File Name for Lines" propertyType="String" defaultValue="esrilinestylekml" mandatory="false" readOnly="false"/>
 		<propertyDefinition propertyName="lineStyleId" label="Line Symbol ID" description="Line Symbol ID from the Line Style File" propertyType="String" defaultValue="linestyleGreen" mandatory="false" readOnly="false"/>
 		<propertyDefinition propertyName="altitudeMode" label="Altitude Mode" description="Altitude Mode" propertyType="String" defaultValue="clampToGround" mandatory="false" readOnly="false"/>

@@ -417,13 +417,4 @@ public class KmlRequestParameters
   {
     this.compressKml = compressKml;
   }
-
-  private boolean validateAltitudeMode(String input)
-  {
-    if (input.equalsIgnoreCase(AltitudeMode.ABSOLUTE) || input.equalsIgnoreCase(AltitudeMode.CLAMPTOSEAFLOOR) || input.equalsIgnoreCase(AltitudeMode.CLAMTOGROUND) || input.equalsIgnoreCase(AltitudeMode.RELATIVETOGROUND) || input.equalsIgnoreCase(AltitudeMode.RELATIVETOSEAFLOOR))
-    {
-      return true;
-    }
-    return false;
-  }
 }

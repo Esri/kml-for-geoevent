@@ -20,7 +20,7 @@
   Redlands, California, USA 92373
 
   email: contracts@esri.com
-*/
+ */
 
 package com.esri.geoevent.adapter.kml;
 
@@ -31,24 +31,23 @@ import com.esri.ges.core.component.ComponentException;
 
 public class KmlOutboundAdapterService extends AdapterServiceBase
 {
-  private KmlGeneratorService kmlGeneratorService;
+	private KmlGeneratorService	kmlGeneratorService;
 
-  public KmlOutboundAdapterService()
+	public KmlOutboundAdapterService()
 	{
 		definition = new XmlAdapterDefinition(getResourceAsStream("outboundadapter-definition.xml"));
 	}
-  
+
 	@Override
 	public Adapter createAdapter() throws ComponentException
 	{
-		KmlOutboundAdapter adapter =  new KmlOutboundAdapter(definition);
+		KmlOutboundAdapter adapter = new KmlOutboundAdapter(definition);
 		adapter.setKmlGenerator(kmlGeneratorService);
-    return adapter;
+		return adapter;
 	}
-	
-	
+
 	public void setKmlGeneratorService(KmlGeneratorService kmlGeneratorService)
-  {
-    this.kmlGeneratorService = kmlGeneratorService;
-  }
+	{
+		this.kmlGeneratorService = kmlGeneratorService;
+	}
 }

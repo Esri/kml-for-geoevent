@@ -31,17 +31,17 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.stream.XMLStreamException;
-
 import com.esri.ges.adapter.AdapterDefinition;
 import com.esri.ges.adapter.OutboundAdapterBase;
 import com.esri.ges.core.component.ComponentException;
 import com.esri.ges.core.geoevent.GeoEvent;
+import com.esri.ges.framework.i18n.BundleLogger;
+import com.esri.ges.framework.i18n.BundleLoggerFactory;
 import com.esri.ges.util.Converter;
 
 public class KmlOutboundAdapter extends OutboundAdapterBase
 {
+  private static final BundleLogger LOGGER = BundleLoggerFactory.getLogger(KmlOutboundAdapter.class);
 
   private KmlRequestParameters  params      = new KmlRequestParameters();
   private KmlGeneratorService   kmlGenerator;
@@ -50,7 +50,6 @@ public class KmlOutboundAdapter extends OutboundAdapterBase
   public KmlOutboundAdapter(AdapterDefinition definition) throws ComponentException
   {
     super(definition);
-
   }
 
   @Override
@@ -61,8 +60,6 @@ public class KmlOutboundAdapter extends OutboundAdapterBase
   @Override
   public void receive(GeoEvent geoEvent)
   {
-    // TODO Auto-generated method stub
-
   }
 
   @Override
@@ -71,7 +68,6 @@ public class KmlOutboundAdapter extends OutboundAdapterBase
     byte[] output = null;
     loadProperties();
     compressKml = getProperty("compression").getValueAsString().equalsIgnoreCase("true") ? true : false;
-
     try
     {
       if (params.isLinksOnly())
@@ -82,19 +78,11 @@ public class KmlOutboundAdapter extends OutboundAdapterBase
       if (compressKml)
         output = zipBytes(params.getOutputName() + ".kml", output);
     }
-    catch (IOException e)
+    catch (Exception error)
     {
-      throw new ComponentException("KmlOutboundAdapter encountered an error in processData.  " + e.getMessage());
+      throw new ComponentException(LOGGER.translate("PROCESS_DATA_ERROR", error.getMessage()));
     }
-    catch (JAXBException e)
-    {
-      throw new ComponentException("KmlOutboundAdapter encountered an error in processData.  " + e.getMessage());
-    }
-    catch (XMLStreamException e)
-    {
-      throw new ComponentException("KmlOutboundAdapter encountered an error in processData.  " + e.getMessage());
-    }
-
+    
     return output;
   }
 

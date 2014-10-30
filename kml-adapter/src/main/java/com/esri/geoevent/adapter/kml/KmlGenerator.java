@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -38,16 +39,10 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.esri.ges.core.geoevent.GeoEvent;
-import com.esri.geoevent.adapter.kml.CdataXmlStreamWriter;
 
 public class KmlGenerator extends KmlGeneratorBase implements KmlGeneratorService
-{
-  private static final Log      LOG                             = LogFactory.getLog(KmlGenerator.class);
-  
+{  
   @Override
   public byte[] generateInitialKml(KmlRequestParameters params) throws JAXBException, XMLStreamException
   {
@@ -146,10 +141,10 @@ public class KmlGenerator extends KmlGeneratorBase implements KmlGeneratorServic
     JAXBContext context2;
     Marshaller m2;
 
-    Iterator it = cache.entrySet().iterator();
+    Iterator<Entry<String, List<GeoEvent>>> it = cache.entrySet().iterator();
     while (it.hasNext())
     {
-      Map.Entry pairs = (Map.Entry) it.next();
+      Entry<String, List<GeoEvent>> pairs = it.next();
       List<GeoEvent> eventList = (List<GeoEvent>) pairs.getValue();
       if(eventList.size()>0)
       {
@@ -196,11 +191,11 @@ public class KmlGenerator extends KmlGeneratorBase implements KmlGeneratorServic
     networkLinkControl.setUpdate(update);
     kml.setNetworkLinkControl(networkLinkControl);
 
-    Iterator it = cache.entrySet().iterator();
-    while (it.hasNext())
+    Iterator<Entry<String, List<GeoEvent>>> itr = cache.entrySet().iterator();
+    while (itr.hasNext())
     {
-      Map.Entry pairs = (Map.Entry) it.next();
-      List<GeoEvent> eventList = (List<GeoEvent>) pairs.getValue();
+      Entry<String, List<GeoEvent>> pairs = itr.next();
+      List<GeoEvent> eventList = pairs.getValue();
       if(eventList.size()>0)
       {
         GeoEvent lastEvent = eventList.get(0);
