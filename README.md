@@ -22,7 +22,7 @@ Installing the cfg file and the built jar file:
 
 ## Requirements
 
-* ArcGIS GeoEvent Extension for Server (Certified with version 10.2.x).
+* ArcGIS GeoEvent Extension for Server (Certified with version 10.3.x).
 * ArcGIS GeoEvent Extension SDK.
 * Java JDK 1.7 or greater.
 * Maven.
