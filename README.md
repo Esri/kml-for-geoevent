@@ -1,6 +1,6 @@
 # kml-for-geoevent
 
-ArcGIS 10.3.x GeoEvent Extension KML Outbound Adapter for sending GeoEvents in the KML format.
+ArcGIS 10.3 GeoEvent Extension for Server KML Outbound Adapter for sending GeoEvents in the KML format.
 
 ![App](kml-for-geoevent.png?raw=true)
 
@@ -29,8 +29,8 @@ Installing the cfg file and the built jar file:
 
 ## Resources
 
-* [Connector gallery item](http://www.arcgis.com/home/item.html?id=8ddf65e2d9894d37ae19856671392c45) on the ArcGIS GeoEvent Extension Gallery
-* [ArcGIS GeoEvent Extension for Server Resource Center](http://links.esri.com/geoevent)
+* [ArcGIS GeoEvent Extension Gallery](http://links.esri.com/geovent-gallery) 
+* [ArcGIS GeoEvent Extension for Server Resources](http://links.esri.com/geoevent)
 * [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
 * [KML Reference](https://developers.google.com/kml/documentation/kmlreference)
 * [twitter@esri](http://twitter.com/esri)
