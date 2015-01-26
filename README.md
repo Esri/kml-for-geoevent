@@ -1,6 +1,6 @@
 # kml-for-geoevent
 
-ArcGIS 10.3 GeoEvent Extension for Server KML Outbound Adapter for sending GeoEvents in the KML format.
+ArcGIS 10.3 GeoEvent Extension for Server KML Outpu Connector for sending GeoEvents in the KML format.
 
 ![App](kml-for-geoevent.png?raw=true)
 
