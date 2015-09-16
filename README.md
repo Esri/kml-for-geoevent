@@ -29,7 +29,7 @@ Installing the cfg file and the built jar file:
 
 ## Resources
 
-* [ArcGIS GeoEvent Extension Gallery](http://links.esri.com/geovent-gallery) 
+* [ArcGIS GeoEvent Extension Gallery](http://links.esri.com/geoevent-gallery) 
 * [ArcGIS GeoEvent Extension for Server Resources](http://links.esri.com/geoevent)
 * [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
 * [KML Reference](https://developers.google.com/kml/documentation/kmlreference)
