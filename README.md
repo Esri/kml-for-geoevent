@@ -1,6 +1,6 @@
 # kml-for-geoevent
 
-ArcGIS 10.3 GeoEvent Extension for Server KML Outpu Connector for sending GeoEvents in the KML format.
+ArcGIS 10.4 GeoEvent Extension for Server KML Outpu Connector for sending GeoEvents in the KML format.
 
 ![App](kml-for-geoevent.png?raw=true)
 
@@ -22,7 +22,7 @@ Installing the cfg file and the built jar file:
 
 ## Requirements
 
-* ArcGIS GeoEvent Extension for Server (Certified with version 10.3.x).
+* ArcGIS GeoEvent Extension for Server (Certified with version 10.4.x).
 * ArcGIS GeoEvent Extension SDK.
 * Java JDK 1.7 or greater.
 * Maven.
